@@ -1,0 +1,7 @@
+D:\xzsdj.github\DJ.CSharp.DbHelper\DataHelper\DataHelper\bin\Debug\DataHelper.dll.config
+D:\xzsdj.github\DJ.CSharp.DbHelper\DataHelper\DataHelper\bin\Debug\DataHelper.dll
+D:\xzsdj.github\DJ.CSharp.DbHelper\DataHelper\DataHelper\bin\Debug\DataHelper.pdb
+D:\xzsdj.github\DJ.CSharp.DbHelper\DataHelper\DataHelper\bin\Debug\MySql.Data.dll
+D:\xzsdj.github\DJ.CSharp.DbHelper\DataHelper\DataHelper\obj\Debug\DataHelper.dll
+D:\xzsdj.github\DJ.CSharp.DbHelper\DataHelper\DataHelper\obj\Debug\DataHelper.pdb
+D:\xzsdj.github\DJ.CSharp.DbHelper\DataHelper\DataHelper\bin\Debug\Oracle.ManagedDataAccess.dll

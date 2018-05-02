@@ -64,12 +64,56 @@ namespace DatabaseLib
 
         public DataSet ExecuteDataset(string SQL)
         {
-            throw new NotImplementedException();
+            string error = "";
+            using (OracleConnection conn = new OracleConnection(DataHelper.ConnectString))
+            {
+                DataSet ds = new DataSet();
+                try
+                {
+                    conn.Open();
+                    OracleDataAdapter command = new OracleDataAdapter(SQL, conn);
+                    command.Fill(ds);
+                }
+                catch (OracleException ex)
+                {
+                    error = ex.Message; ds = null;
+                }
+                finally
+                {
+                    if (conn.State != ConnectionState.Closed)
+                    {
+                        conn.Close();
+                    }
+                }
+                return ds;
+            }
         }
 
         public DataSet ExecuteDataset(string SQL, string TableName)
         {
-            throw new NotImplementedException();
+            string error = "";
+            using (OracleConnection conn = new OracleConnection(DataHelper.ConnectString))
+            {
+                DataSet ds = new DataSet();
+                try
+                {
+                    conn.Open();
+                    OracleDataAdapter command = new OracleDataAdapter(SQL, conn);
+                    command.Fill(ds, TableName);
+                }
+                catch (OracleException ex)
+                {
+                    error = ex.Message; ds = null;
+                }
+                finally
+                {
+                    if (conn.State != ConnectionState.Closed)
+                    {
+                        conn.Close();
+                    }
+                }
+                return ds;
+            }
         }
 
         public DataSet ExecuteDataset(string[] SQLs, string[] TableNames)

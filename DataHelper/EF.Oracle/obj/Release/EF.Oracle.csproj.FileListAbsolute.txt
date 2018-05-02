@@ -1,0 +1,12 @@
+D:\xzsdj.github\DbHelper\DataHelper\EF.Oracle\bin\Release\EF.Oracle.dll.config
+D:\xzsdj.github\DbHelper\DataHelper\EF.Oracle\bin\Release\EF.Oracle.dll
+D:\xzsdj.github\DbHelper\DataHelper\EF.Oracle\bin\Release\EF.Oracle.pdb
+D:\xzsdj.github\DbHelper\DataHelper\EF.Oracle\bin\Release\EntityFramework.dll
+D:\xzsdj.github\DbHelper\DataHelper\EF.Oracle\bin\Release\EntityFramework.SqlServer.dll
+D:\xzsdj.github\DbHelper\DataHelper\EF.Oracle\bin\Release\Oracle.ManagedDataAccess.dll
+D:\xzsdj.github\DbHelper\DataHelper\EF.Oracle\bin\Release\Oracle.ManagedDataAccess.EntityFramework.dll
+D:\xzsdj.github\DbHelper\DataHelper\EF.Oracle\bin\Release\EntityFramework.xml
+D:\xzsdj.github\DbHelper\DataHelper\EF.Oracle\bin\Release\EntityFramework.SqlServer.xml
+D:\xzsdj.github\DbHelper\DataHelper\EF.Oracle\obj\Release\EF.Oracle.csprojResolveAssemblyReference.cache
+D:\xzsdj.github\DbHelper\DataHelper\EF.Oracle\obj\Release\EF.Oracle.dll
+D:\xzsdj.github\DbHelper\DataHelper\EF.Oracle\obj\Release\EF.Oracle.pdb

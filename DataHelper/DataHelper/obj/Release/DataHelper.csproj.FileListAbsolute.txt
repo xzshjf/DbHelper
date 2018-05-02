@@ -1,0 +1,7 @@
+D:\xzsdj.github\DbHelper\DataHelper\DataHelper\bin\Release\DataHelper.dll.config
+D:\xzsdj.github\DbHelper\DataHelper\DataHelper\bin\Release\DataHelper.dll
+D:\xzsdj.github\DbHelper\DataHelper\DataHelper\bin\Release\DataHelper.pdb
+D:\xzsdj.github\DbHelper\DataHelper\DataHelper\bin\Release\MySql.Data.dll
+D:\xzsdj.github\DbHelper\DataHelper\DataHelper\bin\Release\Oracle.ManagedDataAccess.dll
+D:\xzsdj.github\DbHelper\DataHelper\DataHelper\obj\Release\DataHelper.dll
+D:\xzsdj.github\DbHelper\DataHelper\DataHelper\obj\Release\DataHelper.pdb

@@ -1,0 +1,17 @@
+D:\工程项目\项目内容\南山铝业40MN拉伸机\Code\vs2015Projects\DJ.Common\bin\Debug\NLog.config
+D:\工程项目\项目内容\南山铝业40MN拉伸机\Code\vs2015Projects\DJ.Common\bin\Debug\DJ.Common.dll.config
+D:\工程项目\项目内容\南山铝业40MN拉伸机\Code\vs2015Projects\DJ.Common\bin\Debug\DJ.Common.dll
+D:\工程项目\项目内容\南山铝业40MN拉伸机\Code\vs2015Projects\DJ.Common\bin\Debug\DJ.Common.pdb
+D:\工程项目\项目内容\南山铝业40MN拉伸机\Code\vs2015Projects\DJ.Common\bin\Debug\NLog.dll
+D:\工程项目\项目内容\南山铝业40MN拉伸机\Code\vs2015Projects\DJ.Common\bin\Debug\NLog.xml
+D:\工程项目\项目内容\南山铝业40MN拉伸机\Code\vs2015Projects\DJ.Common\obj\Debug\DJ.Common.dll
+D:\工程项目\项目内容\南山铝业40MN拉伸机\Code\vs2015Projects\DJ.Common\obj\Debug\DJ.Common.pdb
+D:\工程项目\项目内容\南山铝业40MN拉伸机\Code\vs2015Projects\DJ.Common\obj\Debug\DJ.Common.csprojResolveAssemblyReference.cache
+D:\xzsdj.github\DbHelper\DataHelper\NLogManager\bin\Debug\NLog.config
+D:\xzsdj.github\DbHelper\DataHelper\NLogManager\bin\Debug\NLogManager.dll.config
+D:\xzsdj.github\DbHelper\DataHelper\NLogManager\bin\Debug\NLogManager.dll
+D:\xzsdj.github\DbHelper\DataHelper\NLogManager\bin\Debug\NLogManager.pdb
+D:\xzsdj.github\DbHelper\DataHelper\NLogManager\bin\Debug\NLog.xml
+D:\xzsdj.github\DbHelper\DataHelper\NLogManager\obj\Debug\DJ.Common.csprojResolveAssemblyReference.cache
+D:\xzsdj.github\DbHelper\DataHelper\NLogManager\obj\Debug\NLogManager.dll
+D:\xzsdj.github\DbHelper\DataHelper\NLogManager\obj\Debug\NLogManager.pdb

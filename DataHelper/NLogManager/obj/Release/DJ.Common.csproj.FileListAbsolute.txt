@@ -1,0 +1,6 @@
+D:\工程项目\项目内容\南山铝业40MN拉伸机\Code\vs2015Projects\DJ.Common\bin\Release\DJ.Common.dll.config
+D:\工程项目\项目内容\南山铝业40MN拉伸机\Code\vs2015Projects\DJ.Common\bin\Release\DJ.Common.dll
+D:\工程项目\项目内容\南山铝业40MN拉伸机\Code\vs2015Projects\DJ.Common\bin\Release\DJ.Common.pdb
+D:\工程项目\项目内容\南山铝业40MN拉伸机\Code\vs2015Projects\DJ.Common\bin\Release\Oracle.ManagedDataAccess.dll
+D:\工程项目\项目内容\南山铝业40MN拉伸机\Code\vs2015Projects\DJ.Common\obj\Release\DJ.Common.dll
+D:\工程项目\项目内容\南山铝业40MN拉伸机\Code\vs2015Projects\DJ.Common\obj\Release\DJ.Common.pdb

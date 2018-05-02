@@ -93,11 +93,11 @@ namespace DatabaseLib
             }
         }
 
-        public DbParameter CreateParam(string paramName, SqlDbType dbType, object objValue, int size = 0, ParameterDirection direction = ParameterDirection.Input)
+        public DbParameter CreateParam(string paramName, DbType dbType, object objValue, int size = 0, ParameterDirection direction = ParameterDirection.Input)
         {
             if (string.IsNullOrEmpty(paramName)) return null;
             if (paramName[0] == '@') paramName = 'p' + paramName.TrimStart('@');
-            MySqlParameter parameter = new MySqlParameter(paramName, ConvertType(dbType));
+            MySqlParameter parameter = new MySqlParameter(paramName, ConvertType((SqlDbType)dbType));
             if (size > 0) parameter.Size = size;
             if (objValue == null)
             {

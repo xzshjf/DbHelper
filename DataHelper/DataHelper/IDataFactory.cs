@@ -1,7 +1,11 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 
+/// <summary>
+/// 使用于MSSQL、MySQL数据库
+/// </summary>
 namespace DatabaseLib
 {
     public interface IDataFactory
@@ -9,7 +13,7 @@ namespace DatabaseLib
         bool BulkCopy(IDataReader reader, string tableName, string command = null, SqlBulkCopyOptions options = SqlBulkCopyOptions.Default);
         void CallException(string message);
         bool ConnectionTest();
-        DbParameter CreateParam(string paramName, SqlDbType dbType, object objValue, int size = 0, ParameterDirection direction = ParameterDirection.Input);
+        DbParameter CreateParam(string paramName, DbType dbType, object objValue, int size = 0, ParameterDirection direction = ParameterDirection.Input);
         DataRow ExecuteDataRowProcedure(string ProName, params DbParameter[] ParaName);
         DataRowView ExecuteDataRowViewProcedure(string ProName, params DbParameter[] ParaName);
         DataSet ExecuteDataset(string SQL);
@@ -29,5 +33,8 @@ namespace DatabaseLib
         bool ExecuteStoredProcedure(string ProName);
         int ExecuteStoredProcedure(string ProName, params DbParameter[] ParaName);
         void FillDataSet(ref DataSet ds, string SQL, string TableName);
+
+
     }
 }
+

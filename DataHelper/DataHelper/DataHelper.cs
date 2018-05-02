@@ -8,20 +8,19 @@ using System.IO;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Configuration;
 
 namespace DatabaseLib
 {
     public static class DataHelper
     {
-        static string m_ConnStr = @"Data Source=.\SQLEXPRESS;Initial Catalog=SharpSCADA;Integrated Security=True";
-        static string m_Path = @"D:\HDA";
-        static string m_host = Environment.MachineName;
-        static string m_type = "MSSQL";
-        //数据库工厂接口  
-        const string CFGPATH = @"C:\DataConfig\host.cfg";
-        const string INIPATH = @"C:\DataConfig\host.ini";
-        const string DATALOGSOURCE = "Data Operations";
-        const string DATALOGNAME = "Data Log";
+        static readonly string m_ConnStr = ConfigurationManager.AppSettings["OraConnstr"].ToString();  
+        static readonly string m_host = Environment.MachineName;
+        static string m_type = "Oracle";
+        
+        static readonly string INIPATH = AppDomain.CurrentDomain.BaseDirectory + "sysconfig.ini";
+        static string DATALOGSOURCE = "Data Operations";
+        static string DATALOGNAME = "Data Log";
         const int STRINGMAX = 255;
 
         static EventLog Log;
@@ -46,10 +45,7 @@ namespace DatabaseLib
             get { return m_ConnStr; }
         }
 
-        public static string HdaPath
-        {
-            get { return m_Path; }
-        }
+        
         #endregion
         /// <summary>  
         /// 数据库工厂构造函数  
@@ -69,20 +65,10 @@ namespace DatabaseLib
                     m_host = sb.ToString();
                     WinAPI.GetPrivateProfileString("DATABASE", "CONNSTRING", m_ConnStr, sb, STRINGMAX, INIPATH);
                     m_ConnStr = sb.ToString();
-                    WinAPI.GetPrivateProfileString("DATABASE", "ARCHIVE", m_Path, sb, STRINGMAX, INIPATH);
-                    m_Path = sb.ToString();
                     WinAPI.GetPrivateProfileString("DATABASE", "TYPE", m_type, sb, STRINGMAX, INIPATH);
                     m_type = sb.ToString();
                 }
-                else if (File.Exists(CFGPATH))
-                {
-                    using (StreamReader objReader = new StreamReader(CFGPATH))
-                    {
-                        m_host = objReader.ReadLine();
-                        m_ConnStr = objReader.ReadLine();
-                        m_Path = objReader.ReadLine();
-                    }
-                }
+                
                 IPAddress addr;
                 if (string.IsNullOrEmpty(m_host) || !IPAddress.TryParse(m_host, out addr))
                 {
@@ -96,8 +82,11 @@ namespace DatabaseLib
                     case "MYSQL":
                         _ins = new MysqlFactory();
                         break;
+                    case "ORACLE":
+                        _ins = new OracleFactory();
+                        break;
                     default:
-                        _ins = new MssqlFactory();
+                        _ins = null;
                         break;
                 }
             }
@@ -107,7 +96,7 @@ namespace DatabaseLib
             }
         }
 
-        public static DbParameter CreateParam(string paramName, SqlDbType dbType, object objValue, int size = 0, ParameterDirection direction = ParameterDirection.Input)
+        public static DbParameter CreateParam(string paramName, DbType dbType, object objValue, int size = 0, ParameterDirection direction = ParameterDirection.Input)
         {
             return _ins.CreateParam(paramName, dbType, objValue, size, direction);
         }

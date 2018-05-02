@@ -1,0 +1,5 @@
+D:\xzsdj.github\DbHelper\DataHelper\ConsoleTest\bin\Debug\ConsoleTest.exe.config
+D:\xzsdj.github\DbHelper\DataHelper\ConsoleTest\bin\Debug\ConsoleTest.exe
+D:\xzsdj.github\DbHelper\DataHelper\ConsoleTest\bin\Debug\ConsoleTest.pdb
+D:\xzsdj.github\DbHelper\DataHelper\ConsoleTest\obj\Debug\ConsoleTest.exe
+D:\xzsdj.github\DbHelper\DataHelper\ConsoleTest\obj\Debug\ConsoleTest.pdb

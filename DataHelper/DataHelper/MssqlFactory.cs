@@ -14,14 +14,10 @@ namespace DatabaseLib
 
         public bool ConnectionTest()
         {
-            //创建连接对象
             using (SqlConnection m_Conn = new SqlConnection(DataHelper.ConnectString))
             {
-                //mySqlConnection.ConnectionTimeout = 1;//设置连接超时的时间
                 try
                 {
-                    //Open DataBase
-                    //打开数据库
                     m_Conn.Open();
                     if (m_Conn.State == ConnectionState.Open)
                     {
@@ -33,11 +29,10 @@ namespace DatabaseLib
                     CallException(e.Message);
                 }
             }
-            //mySqlConnection   is   a   SqlConnection   object 
             return false;
         }
 
-        public DbParameter CreateParam(string paramName, SqlDbType dbType, object objValue, int size = 0, ParameterDirection direction = ParameterDirection.Input)
+        public DbParameter CreateParam(string paramName, DbType dbType, object objValue, int size = 0, ParameterDirection direction = ParameterDirection.Input)
         {
             SqlParameter parameter = new SqlParameter(paramName, dbType);
             if (size > 0) parameter.Size = size;

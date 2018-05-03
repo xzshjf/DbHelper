@@ -168,12 +168,49 @@ namespace DatabaseLib
 
         public DbDataReader ExecuteReader(string sSQL)
         {
-            throw new NotImplementedException();
+            string error = "";
+            OracleDataReader reader = null;
+            OracleConnection conn = new OracleConnection(DataHelper.ConnectString);
+            try
+            {
+                if (conn.State == ConnectionState.Closed)
+                    conn.Open();
+                OracleCommand comm = new OracleCommand(sSQL, conn);
+                reader = comm.ExecuteReader(CommandBehavior.CloseConnection);
+            }
+            catch (OracleException ex)
+            {
+                error = ex.Message; reader = null;
+            }
+
+            return reader;
         }
 
         public object ExecuteScalar(string sSQL)
         {
-            throw new NotImplementedException();
+            string error = "";
+            using (OracleConnection conn = new OracleConnection(DataHelper.ConnectString))
+            {
+                object ret = null;
+                OracleCommand cmd = new OracleCommand();
+                try
+                {
+                    conn.Open();
+                    cmd.Connection = conn;
+                    cmd.CommandText = sSQL;
+                    ret = cmd.ExecuteScalar();
+                }
+                catch (Exception ex)
+                {
+                    error = ex.Message; ret = null;
+                }
+                finally
+                {
+                    if (conn.State != ConnectionState.Closed)
+                        conn.Close();
+                }
+                return ret;
+            }
         }
 
         public bool ExecuteStoredProcedure(string ProName)

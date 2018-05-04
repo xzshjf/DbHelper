@@ -110,28 +110,20 @@ namespace DatabaseLib
         public DataSet ExecuteDataset(string SQL, string TableName)
         {
             string error = "";
-            using (OracleConnection conn = new OracleConnection(DataHelper.ConnectString))
+            DataSet ds = new DataSet();
+            try
             {
-                DataSet ds = new DataSet();
-                try
-                {
-                    conn.Open();
-                    OracleDataAdapter command = new OracleDataAdapter(SQL, conn);
-                    command.Fill(ds, TableName);
-                }
-                catch (OracleException ex)
-                {
-                    error = ex.Message; ds = null;
-                }
-                finally
-                {
-                    if (conn.State != ConnectionState.Closed)
-                    {
-                        conn.Close();
-                    }
-                }
-                return ds;
+                if (OraConn.State != ConnectionState.Open)
+                    OraConn.Open();
+                OracleDataAdapter command = new OracleDataAdapter(SQL, OraConn);
+                command.Fill(ds,TableName);
             }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+                Log.AddErrorLog(error);
+            }
+            return ds;
         }
 
         public DataSet ExecuteDataset(string[] SQLs, string[] TableNames)
@@ -188,19 +180,18 @@ namespace DatabaseLib
         {
             string error = "";
             OracleDataReader reader = null;
-            OracleConnection conn = new OracleConnection(DataHelper.ConnectString);
             try
             {
-                if (conn.State == ConnectionState.Closed)
-                    conn.Open();
-                OracleCommand comm = new OracleCommand(sSQL, conn);
-                reader = comm.ExecuteReader(CommandBehavior.CloseConnection);
+                if (OraConn.State != ConnectionState.Open)
+                    OraConn.Open();
+                OracleCommand comm = new OracleCommand(sSQL, OraConn);
+                reader = comm.ExecuteReader();
             }
-            catch (OracleException ex)
+            catch (Exception ex)
             {
-                error = ex.Message; reader = null;
+                error = ex.Message;
+                Log.AddErrorLog(error);
             }
-
             return reader;
         }
 

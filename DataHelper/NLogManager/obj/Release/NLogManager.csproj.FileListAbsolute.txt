@@ -4,3 +4,4 @@ D:\xzsdj.github\DbHelper\DataHelper\NLogManager\bin\Release\NLogManager.dll
 D:\xzsdj.github\DbHelper\DataHelper\NLogManager\bin\Release\NLogManager.pdb
 D:\xzsdj.github\DbHelper\DataHelper\NLogManager\obj\Release\NLogManager.dll
 D:\xzsdj.github\DbHelper\DataHelper\NLogManager\obj\Release\NLogManager.pdb
+D:\xzsdj.github\DbHelper\DataHelper\NLogManager\obj\Release\NLogManager.csprojResolveAssemblyReference.cache

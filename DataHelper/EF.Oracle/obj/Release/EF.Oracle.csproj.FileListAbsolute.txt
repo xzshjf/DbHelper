@@ -9,3 +9,4 @@ D:\xzsdj.github\DbHelper\DataHelper\EF.Oracle\bin\Release\EntityFramework.xml
 D:\xzsdj.github\DbHelper\DataHelper\EF.Oracle\bin\Release\EntityFramework.SqlServer.xml
 D:\xzsdj.github\DbHelper\DataHelper\EF.Oracle\obj\Release\EF.Oracle.dll
 D:\xzsdj.github\DbHelper\DataHelper\EF.Oracle\obj\Release\EF.Oracle.pdb
+D:\xzsdj.github\DbHelper\DataHelper\EF.Oracle\obj\Release\EF.Oracle.csprojResolveAssemblyReference.cache

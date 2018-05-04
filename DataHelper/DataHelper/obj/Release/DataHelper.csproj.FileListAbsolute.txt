@@ -5,3 +5,8 @@ D:\xzsdj.github\DbHelper\DataHelper\DataHelper\bin\Release\MySql.Data.dll
 D:\xzsdj.github\DbHelper\DataHelper\DataHelper\bin\Release\Oracle.ManagedDataAccess.dll
 D:\xzsdj.github\DbHelper\DataHelper\DataHelper\obj\Release\DataHelper.dll
 D:\xzsdj.github\DbHelper\DataHelper\DataHelper\obj\Release\DataHelper.pdb
+D:\xzsdj.github\DbHelper\DataHelper\DataHelper\obj\Release\DataHelper.csprojResolveAssemblyReference.cache
+D:\xzsdj.github\DbHelper\DataHelper\DataHelper\bin\Release\NLog.config
+D:\xzsdj.github\DbHelper\DataHelper\DataHelper\bin\Release\NLogManager.dll
+D:\xzsdj.github\DbHelper\DataHelper\DataHelper\bin\Release\NLog.dll
+D:\xzsdj.github\DbHelper\DataHelper\DataHelper\bin\Release\NLogManager.pdb

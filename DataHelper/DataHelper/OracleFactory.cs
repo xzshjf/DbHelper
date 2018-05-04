@@ -12,11 +12,20 @@ using Oracle.ManagedDataAccess.Client;
 using System.Collections.Generic;
 using System.Linq;
 using System.Configuration;
+using NLogManager;
 
 namespace DatabaseLib
 {   
-    public class OracleFactory : IDataFactory
+    public class OracleFactory : IDataFactory,IDisposable
     {
+        private OracleConnection OraConn = null;
+
+        public OracleFactory()
+        {
+            OraConn = new OracleConnection(DataHelper.ConnectString);
+        }
+
+
         public bool BulkCopy(IDataReader reader, string tableName, string command = null, SqlBulkCopyOptions options = SqlBulkCopyOptions.Default)
         {
             throw new NotImplementedException();
@@ -52,6 +61,8 @@ namespace DatabaseLib
             throw new NotImplementedException();
         }
 
+        
+
         public DataRow ExecuteDataRowProcedure(string ProName, params DbParameter[] ParaName)
         {
             throw new NotImplementedException();
@@ -62,31 +73,30 @@ namespace DatabaseLib
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 测试通过  2018-5-4 
+        /// </summary>
+        /// <param name="SQL"></param>
+        /// <returns></returns>
         public DataSet ExecuteDataset(string SQL)
         {
+
             string error = "";
-            using (OracleConnection conn = new OracleConnection(DataHelper.ConnectString))
+            DataSet ds = new DataSet();
+            try
             {
-                DataSet ds = new DataSet();
-                try
-                {
-                    conn.Open();
-                    OracleDataAdapter command = new OracleDataAdapter(SQL, conn);
-                    command.Fill(ds);
-                }
-                catch (OracleException ex)
-                {
-                    error = ex.Message; ds = null;
-                }
-                finally
-                {
-                    if (conn.State != ConnectionState.Closed)
-                    {
-                        conn.Close();
-                    }
-                }
-                return ds;
+                if(OraConn.State != ConnectionState.Open)
+                    OraConn.Open();
+                OracleDataAdapter command = new OracleDataAdapter(SQL, OraConn);
+                command.Fill(ds);
             }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+                Log.AddErrorLog(error);
+            }
+            return ds;
+
         }
 
         public DataSet ExecuteDataset(string SQL, string TableName)
@@ -226,6 +236,15 @@ namespace DatabaseLib
         public void FillDataSet(ref DataSet ds, string SQL, string TableName)
         {
             throw new NotImplementedException();
+        }
+        public void Dispose()
+        {
+            if (OraConn != null)
+            {
+                if (OraConn.State != ConnectionState.Closed)
+                    OraConn.Close();
+                OraConn = null;
+            }
         }
     }
 

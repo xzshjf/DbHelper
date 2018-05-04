@@ -12,3 +12,8 @@ D:\xzsdj.github\DbHelper\DataHelper\DataHelper\bin\Debug\MySql.Data.dll
 D:\xzsdj.github\DbHelper\DataHelper\DataHelper\bin\Debug\Oracle.ManagedDataAccess.dll
 D:\xzsdj.github\DbHelper\DataHelper\DataHelper\obj\Debug\DataHelper.dll
 D:\xzsdj.github\DbHelper\DataHelper\DataHelper\obj\Debug\DataHelper.pdb
+D:\xzsdj.github\DbHelper\DataHelper\DataHelper\obj\Debug\DataHelper.csprojResolveAssemblyReference.cache
+D:\xzsdj.github\DbHelper\DataHelper\DataHelper\bin\Debug\NLog.config
+D:\xzsdj.github\DbHelper\DataHelper\DataHelper\bin\Debug\NLogManager.dll
+D:\xzsdj.github\DbHelper\DataHelper\DataHelper\bin\Debug\NLog.dll
+D:\xzsdj.github\DbHelper\DataHelper\DataHelper\bin\Debug\NLogManager.pdb

@@ -64,7 +64,7 @@ namespace DatabaseLib
                     WinAPI.GetPrivateProfileString("HOST", "SERVER", m_host, sb, STRINGMAX, INIPATH);
                     m_host = sb.ToString();
                     WinAPI.GetPrivateProfileString("DATABASE", "CONNSTRING", m_ConnStr, sb, STRINGMAX, INIPATH);
-                    m_ConnStr = sb.ToString();
+                    //m_ConnStr = sb.ToString();
                     WinAPI.GetPrivateProfileString("DATABASE", "TYPE", m_type, sb, STRINGMAX, INIPATH);
                     m_type = sb.ToString();
                 }

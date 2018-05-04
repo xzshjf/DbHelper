@@ -23,6 +23,14 @@ namespace DatabaseLib
         public OracleFactory()
         {
             OraConn = new OracleConnection(DataHelper.ConnectString);
+            try
+            {
+                OraConn.Open();
+            }
+            catch (Exception ex)
+            {
+                Log.AddErrorLog(ex.Message);
+            }
         }
 
 

@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Configuration;
 using NLogManager;
-
+using System.Diagnostics;
 namespace DatabaseLib
 {   
     public class OracleFactory : IDataFactory,IDisposable
@@ -88,21 +88,21 @@ namespace DatabaseLib
         /// <returns></returns>
         public DataSet ExecuteDataset(string SQL)
         {
-
             string error = "";
             DataSet ds = new DataSet();
             try
             {
                 if(OraConn.State != ConnectionState.Open)
                     OraConn.Open();
-                OracleDataAdapter command = new OracleDataAdapter(SQL, OraConn);
-                command.Fill(ds);
+                OracleDataAdapter OraDa = new OracleDataAdapter(SQL, OraConn);
+                OraDa.Fill(ds);
             }
             catch (Exception ex)
             {
                 error = ex.Message;
                 Log.AddErrorLog(error);
             }
+           
             return ds;
 
         }
@@ -198,28 +198,23 @@ namespace DatabaseLib
         public object ExecuteScalar(string sSQL)
         {
             string error = "";
-            using (OracleConnection conn = new OracleConnection(DataHelper.ConnectString))
+            
+            object ret = null;
+            OracleCommand cmd = new OracleCommand();
+            try
             {
-                object ret = null;
-                OracleCommand cmd = new OracleCommand();
-                try
-                {
-                    conn.Open();
-                    cmd.Connection = conn;
-                    cmd.CommandText = sSQL;
-                    ret = cmd.ExecuteScalar();
-                }
-                catch (Exception ex)
-                {
-                    error = ex.Message; ret = null;
-                }
-                finally
-                {
-                    if (conn.State != ConnectionState.Closed)
-                        conn.Close();
-                }
-                return ret;
+                if (OraConn.State != ConnectionState.Open)
+                    OraConn.Open();
+                OracleCommand comm = new OracleCommand(sSQL, OraConn);
+                ret = comm.ExecuteScalar();
             }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+                Log.AddErrorLog(error);
+            }
+            return ret;
+            
         }
 
         public bool ExecuteStoredProcedure(string ProName)

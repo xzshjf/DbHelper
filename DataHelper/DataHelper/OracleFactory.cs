@@ -46,21 +46,17 @@ namespace DatabaseLib
 
         public bool ConnectionTest()
         {
-            using (SqlConnection m_Conn = new SqlConnection(DataHelper.ConnectString))
+            OraConn = new OracleConnection(DataHelper.ConnectString);
+            try
             {
-                try
-                {
-                    m_Conn.Open();
-                    if (m_Conn.State == ConnectionState.Open)
-                    {
-                        return true;
-                    }
-                }
-                catch (Exception e)
-                {
-                    CallException(e.Message);
-                }
+                OraConn.Open();
+                return true;
             }
+            catch (Exception ex)
+            {
+                CallException(ex.Message);
+            }
+
             return false;
         }
 
@@ -140,10 +136,28 @@ namespace DatabaseLib
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// 执行SQL,返回
+        /// </summary>
+        /// <param name="SQL"></param>
+        /// <returns></returns>
         public DataTable ExecuteDataTable(string SQL)
         {
-            throw new NotImplementedException();
+            string error = "";
+            DataTable dt = new DataTable();
+            try
+            {
+                if (OraConn.State != ConnectionState.Open)
+                    OraConn.Open();
+                OracleDataAdapter command = new OracleDataAdapter(SQL, OraConn);
+                command.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+                Log.AddErrorLog(error);
+            }
+            return dt;
         }
 
         public DataTable ExecuteDataTableProcedure(string ProName, params DbParameter[] ParaName)
@@ -156,9 +170,30 @@ namespace DatabaseLib
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 执行Insert,Update,Delete语句
+        /// </summary>
+        /// <param name="SQL"></param>
+        /// <returns></returns>
         public int ExecuteNonQuery(string SQL)
         {
-            throw new NotImplementedException();
+            int ret = -1;
+            string error = "";
+
+            try
+            {
+                if (OraConn.State != ConnectionState.Open)
+                    OraConn.Open();
+                OracleCommand cmd = new OracleCommand(SQL, OraConn);
+                ret = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+                Log.AddErrorLog(error);
+            }
+
+            return ret;
         }
 
         public int ExecuteNonQuery(string[] SQLs)

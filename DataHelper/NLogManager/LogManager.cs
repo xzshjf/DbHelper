@@ -44,7 +44,9 @@ namespace NLogManager
                             EventLog.CreateEventSource(DATALOGSOURCE, DATALOGNAME);
                         SysLog = new EventLog(DATALOGNAME);
                         break;
-                    case "3": //数据库记录日志[预留]
+                    case "3": //数据库记录日志
+                        break;
+                    case "4": //发送邮件
                         break;
                 }
             }
@@ -58,7 +60,7 @@ namespace NLogManager
         /// 增加错误信息到日志
         /// </summary>
         /// <param name="e"></param>
-        public static void AddErrorLog(string msg)
+        public static void AddErrorLog(string msg, string APPNAME = "", string MODULENAME = "", string PROCNAME = "", string OPERATIONTYPE = "", string IP = "127.0.0.1", string USERNAME = "ADMIN", string LOGGER = "From")
         {
             switch (LogMode)
             {
@@ -69,12 +71,16 @@ namespace NLogManager
                     SysLog.Source = DATALOGSOURCE;
                     SysLog.WriteEntry(msg, EventLogEntryType.Error);
                     break;
-                case "3"://预留写数据库表
+                case "3"://写数据库表
+                    WriteDB(msg, LogLevel.Error, APPNAME, MODULENAME, PROCNAME, OPERATIONTYPE, IP, USERNAME, LOGGER);
+                    break;
+                case "4": //发送邮件
+                    logger.Error(msg);
                     break;
             } 
         }
-
-        public static void AddInfoLog(string msg)
+       
+        public static void AddInfoLog(string msg, string APPNAME = "", string MODULENAME = "", string PROCNAME = "", string OPERATIONTYPE = "", string IP = "127.0.0.1", string USERNAME = "ADMIN", string LOGGER = "From")
         {
             switch (LogMode)
             {
@@ -85,11 +91,32 @@ namespace NLogManager
                     SysLog.Source = DATALOGSOURCE;
                     SysLog.WriteEntry(msg, EventLogEntryType.Information);
                     break;
-                case "3"://预留写数据库表
+                case "3"://写数据库表
+                    WriteDB(msg, LogLevel.Info,APPNAME, MODULENAME, PROCNAME , OPERATIONTYPE , IP, USERNAME , LOGGER );
                     break;
             }
         }
-
+        public static void WriteDB(string LOGMESSAGE, LogLevel Level, string APPNAME = "", string MODULENAME = "", string PROCNAME = "", string OPERATIONTYPE = "", string IP = "127.0.0.1", string USERNAME = "ADMIN", string LOGGER = "Form")
+        {
+            if (LOGMESSAGE.Length > 3000)
+            {
+                LOGMESSAGE = LOGMESSAGE.Substring(0, 3000);
+            }
+            LogEventInfo lei = new LogEventInfo();
+            lei.Properties["ID"] = Guid.NewGuid().ToString("D");
+            lei.Properties["APPNAME"] = APPNAME;
+            lei.Properties["MODULENAME"] = MODULENAME;
+            lei.Properties["PROCNAME"] = PROCNAME;
+            lei.Properties["OPERATIONTYPE"] = OPERATIONTYPE;
+            lei.Properties["LOGGER"] = LOGGER;
+            lei.Properties["LOGMESSAGE"] = LOGMESSAGE;
+            lei.Properties["IP"] = IP;
+            lei.Properties["TIME_STAMP"] = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            lei.Properties["USERNAME"] = USERNAME;
+            lei.Properties["LOGLEVEL"] = Level.Name;
+            lei.Level = Level;
+            logger.Log(lei);
+        }
     }
     public static class WinAPI
     {

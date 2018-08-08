@@ -15,39 +15,21 @@ namespace ConsoleTest
          
         static void Main(string[] args)
         {
-            //long ss = 0;
-            //Stopwatch sw = new Stopwatch();
-            //sw.Start();
-            //string sSQL = "SELECT LASTUPTIME0,LASTUPTIME12,LASTUPTIME11 FROM L2ADMIN.BA_PCMESS WHERE PC_TYPE = 100";
-            //OracleDataReader dr = (OracleDataReader)DataHelper.Instance.ExecuteReader(sSQL);
-            //Log.AddErrorLog("系统错误!");
-            List<Person> lists = new List<Person>();
-            Random r = new Random();
-            //添加数据
-            lists.Add(new Person("5", "dengjie",40));
-            lists.Add(new Person("7", "qiangyabo", 36));
-            lists.Add(new Person("2", "zhangdong", 30));
-            lists.Add(new Person("1", "hanjunfeng", 45));
-            lists.Add(new Person("5", "jiatao", 28));
-            lists.Add(new Person("5", "jiatao", 8));
-
-            Console.WriteLine("排序前：");
-            foreach (var p in lists)
-            {
-                Console.WriteLine(p);
-            }
-            
-            lists.Sort();//排序
-            Console.WriteLine("排序后：");
-            foreach (var p in lists)
-            {
-                Console.WriteLine(p);
-            }
+            TestExecuteScalar();
 
             Console.ReadLine();
         }
+
+        public static void TestExecuteScalar()
+        {
+            object obj = DataHelper.Instance.ExecuteScalar("SELECT ORD_HEAT_NO, ORD_TREATNO FROM L2ADMIN.PL_HEATPLAN WHERE ORD_HEAT_NO = ''");
+
+        }
+
     }
-    
+
+
+
     public class Person : IComparable<Person>
     {
         private string _id;
